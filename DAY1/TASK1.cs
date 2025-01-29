@@ -40,16 +40,6 @@ namespace DAY1
 
         public int getSecondLargestValue()
         {
-            //int max = int.MinValue, secondMax = int.MinValue;
-            //for (int i = 0; i < arr.Length; i++)
-            //{
-            //    if (arr[i] > max)
-            //    {
-            //        secondMax = max;
-            //        max = arr[i];
-            //    }
-            //}
-
             int max = int.MinValue, secondMax = int.MinValue;
             for (int i = 0; i < arr.Length-1; i++)
             {
