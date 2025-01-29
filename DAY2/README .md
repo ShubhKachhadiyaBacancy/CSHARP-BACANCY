@@ -31,6 +31,36 @@ namespace DAY2
             str = Console.ReadLine().ToLower();
         }
 
+        public string occurenceUsingDictionary()
+        {
+            Dictionary<Char, int> count = new Dictionary<Char, int>();
+            int max = int.MinValue;
+            string ch = "";
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (count.ContainsKey(str[i]))
+                {
+                    count[str[i]] = count[str[i]] + 1;
+                }
+                else
+                {
+                    count.Add(str[i], 1);
+                }
+            }
+
+            foreach (char c in count.Keys)
+            {
+                if (count[c] > max)
+                {
+                    max = count[c];
+                    ch =  c.ToString();
+                }
+            }
+
+            return ch;
+        }
+
         public char occurence()
         {
             int[] arr = new int[26];

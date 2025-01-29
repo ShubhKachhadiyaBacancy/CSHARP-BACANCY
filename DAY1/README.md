@@ -45,14 +45,22 @@ namespace CSharp_Tasks.DAY1
             }
         }
 
-        public void sortValues()
-        {
-            Array.Sort(arr);
-        }
-
         public int getSecondLargestValue()
         {
-            return arr[arr.Length-2];
+            int max = int.MinValue, secondMax = int.MinValue;
+            for (int i = 0; i < arr.Length-1; i++)
+            {
+                if (arr[i] > max)
+                {
+                    secondMax = max;
+                    max = arr[i];
+                }
+                else if (arr[i] > secondMax && arr[i] < max)
+                {
+                    secondMax = arr[i];
+                }
+            }
+            return secondMax;
         }
     }
 }
