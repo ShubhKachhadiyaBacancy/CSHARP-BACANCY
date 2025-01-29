@@ -7,5 +7,9 @@ using DAY2;
 
 TASK1 task1 = new TASK1();
 task1.setString();
-char ch = task1.occurence();
-Console.WriteLine(ch);
+
+string str = task1.occurenceUsingDictionary();
+Console.WriteLine("USING DICTIONARY : " + str);
+
+char ch = task1.occurenceUsingArray();
+Console.WriteLine("USING ARRAY : " + ch);

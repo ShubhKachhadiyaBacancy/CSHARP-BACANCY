@@ -26,6 +26,7 @@ logsList.Add("Information: Scheduled backup completed.");
 List<string> keywords = new List<string>();
 keywords.Add("Error");
 keywords.Add("Warning");
+keywords.Add("Delete");
 
 var filteredLogs = logsList.Where(msg => msg.FilterLogMessages(keywords)).ToList();
 

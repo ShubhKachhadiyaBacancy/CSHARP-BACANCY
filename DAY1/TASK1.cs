@@ -12,7 +12,7 @@ namespace DAY1
 {
     public class TASK1
     {
-        private int[] arr = new int[10];
+        private int[] arr = new int[5];
 
         public void getValues()
         {
@@ -40,13 +40,27 @@ namespace DAY1
 
         public int getSecondLargestValue()
         {
+            //int max = int.MinValue, secondMax = int.MinValue;
+            //for (int i = 0; i < arr.Length; i++)
+            //{
+            //    if (arr[i] > max)
+            //    {
+            //        secondMax = max;
+            //        max = arr[i];
+            //    }
+            //}
+
             int max = int.MinValue, secondMax = int.MinValue;
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length-1; i++)
             {
                 if (arr[i] > max)
                 {
                     secondMax = max;
                     max = arr[i];
+                }
+                else if (arr[i] > secondMax && arr[i] < max)
+                {
+                    secondMax = arr[i];
                 }
             }
             return secondMax;
