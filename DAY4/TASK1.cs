@@ -9,10 +9,9 @@ namespace DAY4
     public class TASK1
     {
         private static int sharedCounter = 0;
-        private static readonly object lockObject = new object();
         private void  increamentCounter()
         {
-            lock (lockObject)
+            lock (this)
             {
                 Thread currThread = Thread.CurrentThread;
                 Console.WriteLine($"Name of thread updating the variable is : " +
