@@ -8,49 +8,57 @@ namespace DAY5
 {
     public class Class
     {
-        string className;
+        int classId;
+        string name;
         string section;
-        List <Student> students;
-        List <Teacher> teachers;
+        int teacherId;
 
-        Class() 
+        public Class(int classId, string name,string section) 
         {
-            this.className = className;
-            this.section = section; 
-            students = new List<Student> ();
-            teachers = new List<Teacher>();
+            this.classId = classId;
+            this.name = name;
+            this.section = section;
         }
 
-        public void addStudentToClass(Student student)
+        public int GetClassId()
         {
-            int rollNo = student.getRollNo();
-
-            foreach (Student s in students)
-            {
-                if (s.getRollNo() == rollNo)
-                {
-                    Console.WriteLine("STUDENT ALREADY EXISTS IN THE CLASS");
-                    return;
-                }
-            }
-            students.Add(student);
-            Console.WriteLine("TEACHER ADDED TO CLASS");
+            return this.classId;
         }
 
-        public void addTeacherToClass(Teacher teacher)
+        public void SetClassId(int classId)
         {
-            int teacherId = teacher.getTeacherId();
-
-            foreach (Teacher t in teachers)
-            {
-                if(t.getTeacherId() == teacherId)
-                {
-                    Console.WriteLine("TEACHER ALREADY EXISTS IN THE CLASS");
-                    return;
-                }
-            }
-            teachers.Add(teacher);
-            Console.WriteLine("TEACHER ADDED TO CLASS");
+            this.classId = classId;
         }
+
+        public string GetName()
+        {
+            return this.name;
+        }
+
+        public void SetName(string name)
+        {
+            this.name = name;
+        }
+
+        public string GetSection()
+        {
+            return this.section;
+        }
+
+        public void SetSection(string section)
+        {
+            this.section = section;
+        }
+
+        public int GetTeacherId()
+        {
+            return this.teacherId;
+        }
+
+        public void SetTeacherId(int teacherId)
+        {
+            this.teacherId = teacherId;
+        }
+
     }
 }

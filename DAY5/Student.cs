@@ -12,24 +12,59 @@ namespace DAY5
         int age;
         int rollNo;
         string address;
-        Class studentClass;
-        Student(int rollNo, string name, int age,string address,Class studentClass)
+        int classId;
+        public Student(int rollNo, string name, int age,string address)
         {
             this.name = name;
             this.age = age;
             this.rollNo = rollNo;
             this.address = address;
-            this.studentClass = studentClass;
         }
 
-        public int getRollNo()
+        public String GetName()
+        {
+            return name;
+        }
+
+        public void SetName(String name)
+        {
+            this.name = name;
+        }
+        public int GetAge()
+        {
+            return age;
+        }
+
+        public void SetAge(int age)
+        {
+            this.age = age;
+        }
+
+        public int GetRollNo()
         {
             return this.rollNo;
         }
-
-        public void update(string name, int age, string address, Class studentClass)
+        public void SetRollNo(int rollNo)
         {
+            this.rollNo = rollNo;
+        }
+        public String GetAddress()
+        {
+            return address;
+        }
+        public void SetAddress(String address)
+        {
+            this.address = address;
+        }
 
+        public int GetClassId()
+        {
+            return classId;
+        }
+        
+        public void SetClassId(int classId)
+        {
+            this.classId = classId;
         }
     }
 }
