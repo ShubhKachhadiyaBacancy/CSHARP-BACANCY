@@ -38,7 +38,7 @@ namespace DAY5
 
             foreach (Class c in classes)
             {
-                Console.WriteLine($"CLASSES {count} DETAILS : ");
+                Console.WriteLine($"CLASS {count} DETAILS : ");
                 Console.WriteLine($"NAME : {c.GetName()} \nSECTION : {c.GetSection()}" +
                        $"\nTEACHER : {c.GetTeacherId()}");
                 count++;

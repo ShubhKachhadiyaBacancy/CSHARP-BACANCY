@@ -30,6 +30,7 @@ namespace DAY5
         {
             this.name = name;
         }
+
         public int GetAge()
         {
             return age;
@@ -44,14 +45,17 @@ namespace DAY5
         {
             return this.rollNo;
         }
+
         public void SetRollNo(int rollNo)
         {
             this.rollNo = rollNo;
         }
+
         public String GetAddress()
         {
             return address;
         }
+
         public void SetAddress(String address)
         {
             this.address = address;
