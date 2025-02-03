@@ -22,6 +22,7 @@ namespace DAY3
             }
             
             return keywords.Any(keyword => str.IndexOf(keyword,0) >= 0);
+            //return keywords.Any(keyword => str.Contains(keyword));
         }
     }
 }

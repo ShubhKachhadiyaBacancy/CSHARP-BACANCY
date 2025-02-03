@@ -4,7 +4,7 @@ StudentManagement studentManagement = new StudentManagement();
 try
 {
     studentManagement.AddStudent(7010, "shubh", 21, "kalash Appts");
-    studentManagement.AddStudent(7011, "shubh", 21, "kalash Appts" );
+    studentManagement.AddStudent(7011, "mox", 21, "kalash Appts" );
     studentManagement.SearchStudent(7010);
     studentManagement.UpdateStudent(7010);
     studentManagement.ViewAllStudents();
