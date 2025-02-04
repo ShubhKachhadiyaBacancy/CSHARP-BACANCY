@@ -1,4 +1,4 @@
-﻿    //Create a C# program that demonstrates the use of extension methods to enhance
+﻿//Create a C# program that demonstrates the use of extension methods to enhance
 //built-in types like string and int. The program will not only implement common
 //string and numeric operations using extension methods but also integrate some
 //extra functionality that makes the extension methods more flexible and dynamic.
