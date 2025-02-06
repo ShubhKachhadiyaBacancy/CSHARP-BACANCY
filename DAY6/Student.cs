@@ -14,7 +14,6 @@ namespace DAY6
         {
             Console.WriteLine("CONSTRUCTOR : STUDENT");
         }
-
         ~Student() 
         {
         Console.WriteLine("DESTRUCTOR : STUDENT");

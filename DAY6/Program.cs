@@ -22,17 +22,28 @@ Teacher teacher1  = new Teacher(1,"Jaydip","C# OOP");
 teacher1.SetSalary(20000.00M);
 Console.WriteLine($"TEACHER ID : {teacher1.TeacherId}\nTEACHER NAME : {teacher1.Name}\n" +
     $"TEACHER SUBJECT : {teacher1.Subject}\nTEACHER SALARY : {teacher1.GetSalary()}\n");
+teacher1 = null;
+GC.Collect(); 
+GC.WaitForPendingFinalizers();
 
 Teacher teacher2  = new Teacher(2,"Umesh","C# Basics");
 teacher2.SetSalary(10000.00M);
 Console.WriteLine($"TEACHER ID : {teacher2.TeacherId}\nTEACHER NAME : {teacher2.Name}\n" +
     $"TEACHER SUBJECT : {teacher2.Subject}\nTEACHER SALARY : {teacher2.GetSalary()}\n");
 
+teacher2 = null;
+GC.Collect();
+GC.WaitForPendingFinalizers();
+
 Teacher teacher3 = new Teacher(3, "Nishita", "C# QUIZ");
 teacher3.SetSalary(-10000M);
 //teacher3.salary = 5000M; //ERROR BCZ OF ENCAPSULATION
 Console.WriteLine($"TEACHER ID : {teacher3.TeacherId}\nTEACHER NAME : {teacher3.Name}\n" +
     $"TEACHER SUBJECT : {teacher3.Subject}\nTEACHER SALARY : {teacher3.GetSalary()}\n");
+
+teacher3 = null;
+GC.Collect();
+GC.WaitForPendingFinalizers();
 
 Student student1 = new Student();
 student1.StudentId = 7010;
