@@ -1,5 +1,4 @@
-﻿
-using DAY7;
+﻿using DAY7;
 
 Console.WriteLine("-----------------------------------------------");
 Console.WriteLine("TEACHER OBJECTS : ");
