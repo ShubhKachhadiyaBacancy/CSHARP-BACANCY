@@ -1,32 +1,32 @@
 ﻿//Class Design & Encapsulation
-    //Create a Teacher class with attributes:
-        //TeacherID(int)
-        //Name(string)
-        //Subject(string)
-        //Salary(private decimal)
-    //Implement Encapsulation:
-        //Restrict direct access to Salary (private).
-        //Provide methods: GetSalary()(getter) and SetSalary(decimal salary) (setter, ensuring salary is non - negative).
-    //Implement:
-        //Parameterized Constructor to initialize teacher details.
-        //Destructor to print a message when a teacher leaves.
+//Create a Teacher class with attributes:
+//TeacherID(int)
+//Name(string)
+//Subject(string)
+//Salary(private decimal)
+//Implement Encapsulation:
+//Restrict direct access to Salary (private).
+//Provide methods: GetSalary()(getter) and SetSalary(decimal salary) (setter, ensuring salary is non - negative).
+//Implement:
+//Parameterized Constructor to initialize teacher details.
+//Destructor to print a message when a teacher leaves.
 
 //Tasks to Implement:
-    //Create Teachers & Students:
-        //Add 3 teachers and 5 students.
-        //Ensure encapsulation restricts modifying Salary directly.
+//Create Teachers & Students:
+//Add 3 teachers and 5 students.
+//Ensure encapsulation restricts modifying Salary directly.
 
 using DAY6;
 
-Teacher teacher1  = new Teacher(1,"Jaydip","C# OOP");
+Teacher teacher1 = new Teacher(1, "Jaydip", "C# OOP");
 teacher1.SetSalary(20000.00M);
 Console.WriteLine($"TEACHER ID : {teacher1.TeacherId}\nTEACHER NAME : {teacher1.Name}\n" +
     $"TEACHER SUBJECT : {teacher1.Subject}\nTEACHER SALARY : {teacher1.GetSalary()}\n");
 teacher1 = null;
-GC.Collect(); 
+GC.Collect();
 GC.WaitForPendingFinalizers();
 
-Teacher teacher2  = new Teacher(2,"Umesh","C# Basics");
+Teacher teacher2 = new Teacher(2, "Umesh", "C# Basics");
 teacher2.SetSalary(10000.00M);
 Console.WriteLine($"TEACHER ID : {teacher2.TeacherId}\nTEACHER NAME : {teacher2.Name}\n" +
     $"TEACHER SUBJECT : {teacher2.Subject}\nTEACHER SALARY : {teacher2.GetSalary()}\n");
