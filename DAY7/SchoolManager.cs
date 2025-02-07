@@ -8,13 +8,12 @@ namespace DAY7
 {
     public class SchoolManager : ISchoolOperations
     {   
-        public List<Teacher> teachers;
+        private List<Teacher> teachers;
         public SchoolManager() 
         {
             teachers = new List<Teacher>();
             Console.WriteLine("CONSTRUCTOR : SCHOOL MANAGER");
         }
-
         void ISchoolOperations.AddTeacher(Teacher teacher)
         {
             if (teachers.Contains(teacher))
