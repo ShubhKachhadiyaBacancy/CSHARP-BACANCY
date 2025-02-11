@@ -7,15 +7,18 @@ using System.Threading.Tasks;
 namespace DAY7
 {
     public class SchoolManager : ISchoolOperations
-    {   
+    {
+        //SchoolOperations schoolOperations;
         private List<Teacher> teachers;
         public SchoolManager() 
         {
             teachers = new List<Teacher>();
+            schoolOperations = new SchoolOperations();
             Console.WriteLine("CONSTRUCTOR : SCHOOL MANAGER");
         }
         void ISchoolOperations.AddTeacher(Teacher teacher)
         {
+            //schoolOperations.AddTeacher(teacher);
             if (teachers.Contains(teacher))
             {
                 Console.WriteLine("TEACHER ALREADY PRESENT");
