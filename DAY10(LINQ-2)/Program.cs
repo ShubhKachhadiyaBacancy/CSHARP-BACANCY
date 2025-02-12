@@ -27,41 +27,41 @@ List<Sale> sales = Sale.GetSales();
 
 ProductManagement productManagement = new ProductManagement();
 
-//productManagement.MethodGetProductsWithMatchingSalesDetails(products, sales);
-//productManagement.QueryGetProductsWithMatchingSalesDetails(products, sales);
+productManagement.MethodGetProductsWithMatchingSalesDetails(products, sales);
+productManagement.QueryGetProductsWithMatchingSalesDetails(products, sales);
 
-//productManagement.MethodGetProductSalesCombinations(products, sales);
-//productManagement.QueryGetProductSalesCombinations(products, sales);
+productManagement.MethodGetProductSalesCombinations(products, sales);
+productManagement.QueryGetProductSalesCombinations(products, sales);
 
-//productManagement.MethodGetProductsWithSalesDetails(products, sales);
-//productManagement.QueryGetProductsWithSalesDetails(products, sales);
+productManagement.MethodGetProductsWithSalesDetails(products, sales);
+productManagement.QueryGetProductsWithSalesDetails(products, sales);
 
-//productManagement.MethodGetProductSalesReport(products, sales);
-//productManagement.QueryGetProductSalesReport(products, sales);
+productManagement.MethodGetProductSalesReport(products, sales);
+productManagement.QueryGetProductSalesReport(products, sales);
 
-//productManagement.MethodGetProductsSoldMoreThan10Times(products, sales);
-//productManagement.QueryGetProductsSoldMoreThan10Times(products, sales);
+productManagement.MethodGetProductsSoldMoreThan10Times(products, sales);
+productManagement.QueryGetProductsSoldMoreThan10Times(products, sales);
 
-//productManagement.MethodGetProductNameAndTotalQuantitySold(products, sales);
-//productManagement.QueryGetProductNameAndTotalQuantitySold(products, sales);
+productManagement.MethodGetProductNameAndTotalQuantitySold(products, sales);
+productManagement.QueryGetProductNameAndTotalQuantitySold(products, sales);
 
-//productManagement.MethodGetProductNameAndTotalQuantitySoldAlternative(products, sales);
-//productManagement.QueryGetProductNameAndTotalQuantitySoldAlternative(products, sales);
+productManagement.MethodGetProductNameAndTotalQuantitySoldAlternative(products, sales);
+productManagement.QueryGetProductNameAndTotalQuantitySoldAlternative(products, sales);
 
-//productManagement.MethodGetDistinctProductCategory(products);
-//productManagement.QueryGetDistinctProductCategory(products);
+productManagement.MethodGetDistinctProductCategory(products);
+productManagement.QueryGetDistinctProductCategory(products);
 
-//productManagement.MethodGetProductFromDifferentSupplier(products, productsFromDifferentSupplier);
-//productManagement.QueryGetProductFromDifferentSupplier(products, productsFromDifferentSupplier);
+productManagement.MethodGetProductFromDifferentSupplier(products, productsFromDifferentSupplier);
+productManagement.QueryGetProductFromDifferentSupplier(products, productsFromDifferentSupplier);
 
-//productManagement.MethodGetCommonProductFromDifferentSupplier(products, productsFromDifferentSupplier);
-//productManagement.QueryGetCommonProductFromDifferentSupplier(products, productsFromDifferentSupplier);
+productManagement.MethodGetCommonProductFromDifferentSupplier(products, productsFromDifferentSupplier);
+productManagement.QueryGetCommonProductFromDifferentSupplier(products, productsFromDifferentSupplier);
 
-//productManagement.MethodGetFindProductsInOneCollectionButNotInAnother(products, productsFromDifferentSupplier);
-//productManagement.QueryGetFindProductsInOneCollectionButNotInAnother(products, productsFromDifferentSupplier);
+productManagement.MethodGetFindProductsInOneCollectionButNotInAnother(products, productsFromDifferentSupplier);
+productManagement.QueryGetFindProductsInOneCollectionButNotInAnother(products, productsFromDifferentSupplier);
 
-//productManagement.MethodGetDelayedProductNames(products);
-//productManagement.QueryGetDelayedProductNames(products);
+productManagement.MethodGetDelayedProductNames(products);
+productManagement.QueryGetDelayedProductNames(products);
 
-//productManagement.MethodGetImmediatelyProductNames(products);
-//productManagement.QueryGetImmediatelyProductNames(products);
+productManagement.MethodGetImmediatelyProductNames(products);
+productManagement.QueryGetImmediatelyProductNames(products);

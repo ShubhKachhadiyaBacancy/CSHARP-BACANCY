@@ -8,7 +8,6 @@
 //2.Create a Static List of Courses(Method which returns list of Courses) and populate
 //  at least 20 Course with different instructors and students.
 
-
 //3.Write LINQ Queries(Using Method & Query syntax) to Solve the Following:
     //Get courses with more than 3 credits.
     //Retrieve course names along with their instructors.
