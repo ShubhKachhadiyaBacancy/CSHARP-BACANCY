@@ -26,32 +26,32 @@ using DAY9_LINQ_1_;
 CourseManagement courseManagement = new CourseManagement();
 List<Course> courses = Course.GetCourses();
 
-//courseManagement.MethodGetCreditMoreThanFour(courses);
-//courseManagement.QueryGetCreditMoreThanFour(courses);
+courseManagement.MethodGetCreditMoreThanFour(courses);
+courseManagement.QueryGetCreditMoreThanFour(courses);
 
-//courseManagement.MethodGetCourseNameAndInstructors(courses);
-//courseManagement.QueryGetCourseNameAndInstructors(courses);
+courseManagement.MethodGetCourseNameAndInstructors(courses);
+courseManagement.QueryGetCourseNameAndInstructors(courses);
 
-//courseManagement.MethodGetStudents(courses);
-//courseManagement.QueryGetStudents(courses);
+courseManagement.MethodGetStudents(courses);
+courseManagement.QueryGetStudents(courses);
 
-//courseManagement.MethodGetNumberOfCourses(courses);
-//courseManagement.QueryGetNumberOfCourses(courses);
+courseManagement.MethodGetNumberOfCourses(courses);
+courseManagement.QueryGetNumberOfCourses(courses);
 
-//courseManagement.MethodGetInstructorWithMostCourses(courses);
-//courseManagement.QueryGetInstructorWithMostCourses(courses);
+courseManagement.MethodGetInstructorWithMostCourses(courses);
+courseManagement.QueryGetInstructorWithMostCourses(courses);
 
-//courseManagement.MethodGetCoursesByCreditsThenByName(courses);
-//courseManagement.QueryGetCoursesByCreditsThenByName(courses);
+courseManagement.MethodGetCoursesByCreditsThenByName(courses);
+courseManagement.QueryGetCoursesByCreditsThenByName(courses);
 
-//courseManagement.MethodGetCoursesGroupedByInstructor(courses);
-//courseManagement.QueryGetCoursesGroupedByInstructor(courses);
+courseManagement.MethodGetCoursesGroupedByInstructor(courses);
+courseManagement.QueryGetCoursesGroupedByInstructor(courses);
 
-//courseManagement.MethodGetAverageStudentsPerCourse(courses);
-//courseManagement.QueryGetAverageStudentsPerCourse(courses);
+courseManagement.MethodGetAverageStudentsPerCourse(courses);
+courseManagement.QueryGetAverageStudentsPerCourse(courses);
 
-//courseManagement.MethodGetCourseCountForEachStudent(courses);
-//courseManagement.QueryGetCourseCountForEachStudent(courses);
+courseManagement.MethodGetCourseCountForEachStudent(courses);
+courseManagement.QueryGetCourseCountForEachStudent(courses);
 
-//courseManagement.MethodGetCoursesWithHighestStudent(courses);
-//courseManagement.QueryGetCoursesWithHighestStudent(courses);
+courseManagement.MethodGetCoursesWithHighestStudent(courses);
+courseManagement.QueryGetCoursesWithHighestStudent(courses);
