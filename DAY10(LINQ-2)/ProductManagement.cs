@@ -39,7 +39,6 @@ namespace DAY10_LINQ_2_
                 }
             );
 
-
             Console.WriteLine("---------------------------------------------------------");
             Console.WriteLine("PRODUCTS AND SALES DETAILS WITH MATCHING SALES(METHOD) : ");
             Console.WriteLine("---------------------------------------------------------");
@@ -199,8 +198,8 @@ namespace DAY10_LINQ_2_
             }
         }
 
-        //Create a report that displays product names along with the quantity sold.Ensure that only
-        //products with sales records are included.
+        //Create a report that displays product names along with the quantity sold.
+        //Ensure that only products with sales records are included.
         public void MethodGetProductSalesReport(List<Product> products, List<Sale> sales)
         {
             var productSales = products
@@ -292,31 +291,26 @@ namespace DAY10_LINQ_2_
         }
         public void QueryGetProductsSoldMoreThan10Times(List<Product> products, List<Sale> sales)
         {
-            var productsSales = products
-                .Join(
-                    sales,
-                    product => product.ProductId,
-                    sale => sale.ProductId,
-                    (product, sale) => new
-                    {
-                        ProductName = product.Name,
-                        Quantity = sale.Quantity
-                    }
-                )
-                .GroupBy(
-                    g => g.ProductName
-                )
-                .Select(ps => new
-                {
-                    ProductName = ps.Key,
-                    Quantity = ps.Sum(p => p.Quantity)
-                }
-                ).Where(x => x.Quantity > 10);
+            var productSales = from product in products
+                               join sale in sales on product.ProductId equals sale.ProductId
+                               select new
+                               {
+                                   ProductName = product.Name,
+                                   Quantity = sale.Quantity
+                               } into ps
+                               group ps by ps.ProductName into g
+                               select new
+                               {
+                                   ProductName = g.Key,
+                                   Quantity = g.Sum(p => p.Quantity) 
+                               } into grp
+                               where grp.Quantity > 10
+                               select grp;
 
             Console.WriteLine("------------------------------------------------");
             Console.WriteLine("PRODUCTS NAME WITH MINIMUM QUANTITY 10(QUERY) : ");
             Console.WriteLine("------------------------------------------------");
-            foreach (var ps in productsSales)
+            foreach (var ps in productSales)
             {
                 Console.WriteLine($"PRODUCT NAME : {ps.ProductName}\nQUANTITY : {ps.Quantity}");
             }
@@ -326,11 +320,16 @@ namespace DAY10_LINQ_2_
         public void MethodGetProductNameAndTotalQuantitySold(List<Product> products, List<Sale> sales)
         {
             var productSales = products
-            .GroupJoin(sales, product => product.ProductId, sale => sale.ProductId, (product, saleGroup) => new
-            {
-                ProductName = product.Name,
-                TotalQuantitySold = saleGroup.Sum(s => s.Quantity)
-            })
+            .GroupJoin(
+                sales, 
+                product => product.ProductId, 
+                sale => sale.ProductId, 
+                (product, saleGroup) => new
+                {
+                    ProductName = product.Name,
+                    TotalQuantitySold = saleGroup.Sum(s => s.Quantity)
+                }
+            )
             .Select(item => new
             {
                 ProductName = item.ProductName,
@@ -435,6 +434,7 @@ namespace DAY10_LINQ_2_
                 Console.WriteLine($"PRODUCT NAME : {ps.ProductName}\nQUANTITY : {ps.Quantity}\n");
             }
         }
+        
         //Retrieve a unique list of product categories.
         public void MethodGetDistinctProductCategory(List<Product> products)
         {
