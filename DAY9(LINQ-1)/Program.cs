@@ -25,8 +25,8 @@ using DAY9_LINQ_1_;
 CourseManagement courseManagement = new CourseManagement();
 List<Course> courses = Course.GetCourses();
 
-courseManagement.MethodGetCreditMoreThanFour(courses);
-courseManagement.QueryGetCreditMoreThanFour(courses);
+courseManagement.MethodGetCreditMoreThanThree(courses);
+courseManagement.QueryGetCreditMoreThanThree(courses);
 
 courseManagement.MethodGetCourseNameAndInstructors(courses);
 courseManagement.QueryGetCourseNameAndInstructors(courses);

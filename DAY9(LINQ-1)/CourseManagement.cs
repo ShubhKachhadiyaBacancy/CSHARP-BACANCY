@@ -29,7 +29,7 @@ namespace DAY9_LINQ_1_
         }
 
         //Get courses with more than 3 credits.
-        public void MethodGetCreditMoreThanFour(List<Course> courses)
+        public void MethodGetCreditMoreThanThree(List<Course> courses)
         {
             List<Course> credits = courses.Where(course => course.Credits > 3).ToList();
             Console.WriteLine("-------------------------------------------");
@@ -37,7 +37,7 @@ namespace DAY9_LINQ_1_
             Console.WriteLine("-------------------------------------------");
             Display(credits);
         }
-        public void QueryGetCreditMoreThanFour(List<Course> courses)
+        public void QueryGetCreditMoreThanThree(List<Course> courses)
         {
             List<Course> credits = (from course in courses 
                                     where course.Credits > 3 
@@ -51,7 +51,10 @@ namespace DAY9_LINQ_1_
         //Retrieve course names along with their instructors.
         public void MethodGetCourseNameAndInstructors(List<Course> c)
         {
-            var courses = c.Select(course => (course.CourseName,course.Instructor));
+            //var courses = c.Select(course => (course.CourseName,course.Instructor));
+            var courses = c.Select(course => new
+            { CourseName = course.CourseName, Instructor = course.Instructor });
+
             Console.WriteLine("-----------------------------------------------------");
             Console.WriteLine("COURSES NAME ALONG WITH THEIR INSTRUCTORS(METHOD ) : ");
             Console.WriteLine("-----------------------------------------------------");
@@ -63,8 +66,10 @@ namespace DAY9_LINQ_1_
         }
         public void QueryGetCourseNameAndInstructors(List<Course> c)
         {
-            var courses = from course in c 
-                          select (course.CourseName,course.Instructor);
+            //var courses = from course in c
+            //              select (course.CourseName, course.Instructor);
+            var courses = from course in c
+                          select new { CourseName = course.CourseName,Instructor = course.Instructor };
             Console.WriteLine("---------------------------------------------------");
             Console.WriteLine("COURSES NAME ALONG WITH THEIR INSTRUCTORS(QUERY) : ");
             Console.WriteLine("---------------------------------------------------");
@@ -74,7 +79,7 @@ namespace DAY9_LINQ_1_
                     $"{course.Instructor}");
             }
         }
-
+        
         //Use SelectMany to get a list of all students enrolled in courses.
         public void MethodGetStudents(List<Course> courses)
         {
@@ -104,7 +109,7 @@ namespace DAY9_LINQ_1_
         //Retrieve the total number of courses offered.
         public void MethodGetNumberOfCourses(List<Course> courses)
         {
-            var count = courses.Distinct().Count();
+            var count = courses.Select(course => course.CourseName).Distinct().Count();
             Console.WriteLine("------------------------------------");
             Console.WriteLine("NUMBER OF COURSES OFFERED(METHOD) : ");
             Console.WriteLine("------------------------------------");
@@ -113,7 +118,7 @@ namespace DAY9_LINQ_1_
         public void QueryGetNumberOfCourses(List<Course> courses)
         {
             var count = (from course in courses 
-                         select course).Distinct().Count();
+                         select course.CourseName).Distinct().Count();
             Console.WriteLine("------------------------------------");
             Console.WriteLine("NUMBER OF COURSES OFFERED(METHOD) : ");
             Console.WriteLine("------------------------------------");
@@ -185,7 +190,7 @@ namespace DAY9_LINQ_1_
                           select new
                           {
                               instructor = grouped.Key,
-                              course = grouped.Select(cn => cn.CourseName)
+                              course = from g in grouped select g.CourseName
                           };
                           
             Console.WriteLine("---------------------------------------");
@@ -270,14 +275,17 @@ namespace DAY9_LINQ_1_
         //Get the course with the highest number of students enrolled.
         public void MethodGetCoursesWithHighestStudent(List<Course> courses)
         {
-            var course = courses.GroupBy(course => course.CourseName)
-                                 .Select(g => new
-                                 {
-                                     courseName = g.Key,
-                                     totalCount = g.Sum(c => c.Students.Count())
-                                 })
-                                 .OrderByDescending(o => o.totalCount).ToList();
+            var course = courses
+                .Select(c => new { courseName = c.CourseName, totalCount = c.Students.Count })
+                .OrderByDescending(c => c.totalCount).ToList();
 
+            //var course = courses.GroupBy(course => course.CourseName)
+            //                     .Select(g => new
+            //                     {
+            //                         courseName = g.Key,
+            //                         totalCount = g.Sum(c => c.Students.Count())
+            //                     })
+            //                     .OrderByDescending(o => o.totalCount).ToList();
             int i;
             Console.WriteLine("------------------------------------------");
             Console.WriteLine("COURSE(S) WITH HIGHEST STUDENT(METHOD) : ");
@@ -297,17 +305,26 @@ namespace DAY9_LINQ_1_
             Console.WriteLine($"COURSE NAME : {course[i].courseName}\n" +
                    $"STUDENT COUNT : {course[i].totalCount}");
         }
-        public void QueryGetCoursesWithHighestStudent(List<Course> courses)
+        public void QueryGetCoursesWithHighestStudent(List<Course> courses) 
         {
             var c = (from course in courses
-                     group course by course.CourseName into grouped
-                     select new
-                     {
-                         courseName = grouped.Key,
-                         totalCount = grouped.Sum(c => c.Students.Count)
-                     })
-                    .OrderByDescending(o => o.totalCount)
-                    .ToList();
+                          select new
+                          {
+                              courseName = course.CourseName,
+                              totalCount = course.Students.Count
+                          })
+              .OrderByDescending(c => c.totalCount)
+              .ToList();
+
+            //var c = (from course in courses
+            //         group course by course.CourseName into grouped
+            //         select new
+            //         {
+            //             courseName = grouped.Key,
+            //             totalCount = grouped.Sum(c => c.Students.Count)
+            //         })
+            //        .OrderByDescending(o => o.totalCount)
+            //        .ToList();
                     
             int i;
             Console.WriteLine("------------------------------------------");
