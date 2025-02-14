@@ -374,39 +374,32 @@ namespace DAY10_LINQ_2_
         public void MethodGetProductNameAndTotalQuantitySoldAlternative(List<Product> products, List<Sale> sales)
          {
             var productSales = products
-           .GroupJoin(
-               sales,
-               product => product.ProductId,
-               sale => sale.ProductId,
-               (product, sale) => new
-               {
-                   ProductName = product.Name,
-                   Sales = sale.DefaultIfEmpty()
-               }
-           )
-           .SelectMany(
-               result => result.Sales.Select(sale => new
-               {
-                   ProductName = result.ProductName,
-                   Quantity = sale?.Quantity ?? 0,
-               })
-           )
-           .GroupBy(
-               ps => ps.ProductName
-           )
-           .Select(g => new
-           {
-               ProductName = g.Key,
-               Quantity = g.Sum(p => p.Quantity)
-           }
-           );
+                .GroupJoin(
+                    sales,
+                    product => product.ProductId,
+                    sale => sale.ProductId,
+                    (product, saleGroup) => new
+                    {
+                        ProductName = product.Name,
+                        Sales = saleGroup.DefaultIfEmpty() // Ensures that products with no sales still appear
+                    })
+                .ToLookup(
+                    productGroup => productGroup.ProductName,  // Group by ProductName
+                    productGroup => productGroup.Sales.Sum(sale => sale?.Quantity ?? 0)  // Sum quantities for each product
+                )
+                .Select(group => new
+                {
+                    ProductName = group.Key,
+                    TotalQuantitySold = group.Sum()  // Sum up all quantities for the product
+                })
+                .ToList();
 
             Console.WriteLine("--------------------------------------------------------");
             Console.WriteLine("PRODUCTS NAME WITH TOTAL QUANTITY ALTERNATIVE(METHOD) : ");
             Console.WriteLine("--------------------------------------------------------");
             foreach (var ps in productSales)
             {
-                Console.WriteLine($"PRODUCT NAME : {ps.ProductName}\nQUANTITY : {ps.Quantity}\n");
+                Console.WriteLine($"PRODUCT NAME : {ps.ProductName}\nQUANTITY : {ps.TotalQuantitySold}\n");
             }
         }
         public void QueryGetProductNameAndTotalQuantitySoldAlternative(List<Product> products, List<Sale> sales)

@@ -1,4 +1,4 @@
-﻿//Write a program that finds the most frequently occurring character in a string entered by the user. Ignore spaces and make it case-insensitive. - Shubh
+﻿//Write a program that finds the most frequently occurring character in a string entered by the user. Ignore spaces and make it case-insensitive. 
 //Example:
 //Input: programming
 //Output: Most Frequent Character: g
