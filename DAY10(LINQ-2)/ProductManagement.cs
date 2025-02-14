@@ -217,10 +217,10 @@ namespace DAY10_LINQ_2_
                 ps => ps.ProductName
             )
             .Select(g => new
-            {
-                ProductName = g.Key,
-                Quantity = g.Sum(p => p.Quantity)
-            }
+                {
+                    ProductName = g.Key,
+                    Quantity = g.Sum(p => p.Quantity)
+                }
             );
 
             Console.WriteLine("--------------------------------------");
@@ -321,28 +321,23 @@ namespace DAY10_LINQ_2_
         {
             var productSales = products
             .GroupJoin(
-                sales, 
-                product => product.ProductId, 
-                sale => sale.ProductId, 
+                sales,
+                product => product.ProductId,
+                sale => sale.ProductId,
                 (product, saleGroup) => new
                 {
                     ProductName = product.Name,
                     TotalQuantitySold = saleGroup.Sum(s => s.Quantity)
                 }
-            )
-            .Select(item => new
-            {
-                ProductName = item.ProductName,
-                Quantity = item.TotalQuantitySold == 0 ? 0 : item.TotalQuantitySold
-            });
+            );
 
-            Console.WriteLine("---------------------------------------------");
-            Console.WriteLine("PRODUCTS NAME WITH TOTAL QUANTITY (METHOD) : ");
-            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine("---------------------------------------------------");
+            Console.WriteLine("PRODUCTS NAME WITH TOTAL SALES QUANTITY (METHOD) : ");
+            Console.WriteLine("---------------------------------------------------");
 
             foreach (var ps in productSales)
             {
-                Console.WriteLine($"PRODUCT NAME : {ps.ProductName}\nQUANTITY : {ps.Quantity}\n");
+                Console.WriteLine($"PRODUCT NAME : {ps.ProductName}\nSALE QUANTITY : {ps.TotalQuantitySold}\n");
             }
         }
         public void QueryGetProductNameAndTotalQuantitySold(List<Product> products, List<Sale> sales)
@@ -360,13 +355,13 @@ namespace DAY10_LINQ_2_
                                    Quantity = item.TotalQuantitySold == 0 ? 0 : item.TotalQuantitySold
                                };
 
-            Console.WriteLine("--------------------------------------------");
-            Console.WriteLine("PRODUCTS NAME WITH TOTAL QUANTITY (QUERY) : ");
-            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine("PRODUCTS NAME WITH TOTAL SALES QUANTITY (QUERY) : ");
+            Console.WriteLine("--------------------------------------------------");
 
             foreach (var ps in productSales)
             {
-                Console.WriteLine($"PRODUCT NAME : {ps.ProductName}\nQUANTITY : {ps.Quantity}\n");
+                Console.WriteLine($"PRODUCT NAME : {ps.ProductName}\nSALE QUANTITY : {ps.Quantity}\n");
             }
         }
 
@@ -381,25 +376,24 @@ namespace DAY10_LINQ_2_
                     (product, saleGroup) => new
                     {
                         ProductName = product.Name,
-                        Sales = saleGroup.DefaultIfEmpty() // Ensures that products with no sales still appear
+                        Sales = saleGroup.DefaultIfEmpty() 
                     })
                 .ToLookup(
-                    productGroup => productGroup.ProductName,  // Group by ProductName
-                    productGroup => productGroup.Sales.Sum(sale => sale?.Quantity ?? 0)  // Sum quantities for each product
+                    productGroup => productGroup.ProductName,  
+                    p => p.Sales.Sum(sale => sale?.Quantity ?? 0) 
                 )
                 .Select(group => new
                 {
                     ProductName = group.Key,
-                    TotalQuantitySold = group.Sum()  // Sum up all quantities for the product
-                })
-                .ToList();
+                    TotalQuantitySold = group.Sum()  
+                });
 
-            Console.WriteLine("--------------------------------------------------------");
-            Console.WriteLine("PRODUCTS NAME WITH TOTAL QUANTITY ALTERNATIVE(METHOD) : ");
-            Console.WriteLine("--------------------------------------------------------");
+            Console.WriteLine("--------------------------------------------------------------");
+            Console.WriteLine("PRODUCTS NAME WITH TOTAL SALES QUANTITY ALTERNATIVE(METHOD) : ");
+            Console.WriteLine("--------------------------------------------------------------");
             foreach (var ps in productSales)
             {
-                Console.WriteLine($"PRODUCT NAME : {ps.ProductName}\nQUANTITY : {ps.TotalQuantitySold}\n");
+                Console.WriteLine($"PRODUCT NAME : {ps.ProductName}\nSALE QUANTITY : {ps.TotalQuantitySold}\n");
             }
         }
         public void QueryGetProductNameAndTotalQuantitySoldAlternative(List<Product> products, List<Sale> sales)
@@ -420,11 +414,11 @@ namespace DAY10_LINQ_2_
                                };
 
             Console.WriteLine("-------------------------------------------------------");
-            Console.WriteLine("PRODUCTS NAME WITH TOTAL QUANTITY ALTERNATIVE(QUERY) : ");
+            Console.WriteLine("PRODUCTS NAME WITH TOTAL SALES QUANTITY ALTERNATIVE(QUERY) : ");
             Console.WriteLine("-------------------------------------------------------");
             foreach (var ps in productSales)
             {
-                Console.WriteLine($"PRODUCT NAME : {ps.ProductName}\nQUANTITY : {ps.Quantity}\n");
+                Console.WriteLine($"PRODUCT NAME : {ps.ProductName}\nSALE QUANTITY : {ps.Quantity}\n");
             }
         }
         
